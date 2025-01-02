@@ -1,0 +1,79 @@
+
+import 'package:flutter/material.dart';
+class smallLayout extends StatelessWidget{
+
+  @override
+  Widget build(BuildContext context) {
+    var gaya=MediaQuery.of(context).orientation;
+    return  Row(
+        children: [
+        if(MediaQuery.of(context).size.width>=600)
+    Container(
+    color: Colors.green,
+    width: 100,
+    child: Center(child: Text("Small layout $gaya"),),
+    ),
+    Expanded(child: Container(
+    color: Colors.red,
+    child: Center(child:Text("Small layout $gaya") ,),
+    )),
+    Expanded(child: Container(
+    color: Colors.blue,
+    child: Center(child:Text("Small layout $gaya") ,),
+    )),
+    ],
+    );
+  }
+}
+class largeLayout extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    var gaya=MediaQuery.of(context).orientation;
+    return  Row(
+      children: [
+        if(MediaQuery.of(context).size.width>=600)
+          Container(
+            color: Colors.green,
+            width: 200,
+            child: Center(child:Text("Large layout $gaya") ,),
+          ),
+        Expanded(child: Container(
+          color: Colors.red,
+          child: Center(child:Text("Large layout $gaya") ,),
+        )),
+        Expanded(child: Container(
+          color: Colors.blue,
+          child: Center(child:Text("Large layout $gaya") ,),
+        ))
+      ],
+    );
+  }
+}
+class Sanugula extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    double small = 400.0;
+    double large = 1000.0;
+    double width = MediaQuery
+        .of(context)
+        .size
+        .width;
+    return MaterialApp(
+      title: "responsive UI",
+      home: Scaffold(
+        appBar: AppBar(title: Text("thriveni APP")),
+        body: LayoutBuilder(
+            builder: (context, constraints) {
+              if (width <= large) {
+                return smallLayout();
+              }
+              else{
+                return largeLayout();
+              }
+            }
+        ),),);
+  }
+}
+void main(){
+  runApp(Sanugula());
+}

@@ -1,0 +1,46 @@
+import 'dart:io';
+void main(){
+while(true)
+{
+print("enter your choice");
+print("1.Addition");
+print("2.subtraction");
+print("3.Multiplication");
+print("4.Division");
+print("5.exit");
+String? choice=stdin.readLineSync();
+if(choice=="5"){
+  exit(0);
+}
+  if(choice!='1'&& choice!='2'&& choice!='3'&& choice!='4'){
+print("Invalid choice, please enter a number between 1 and 5");
+    continue;
+}
+print("enter the frist number:");
+double num1=double.parse(stdin.readLineSync()!);
+print("enter the second number:");
+double num2=double.parse(stdin.readLineSync()!);
+switch(choice){
+case "1":
+print("result:${num1+num2}");
+break;
+case "2":
+print("result:${num1-num2}");
+break;
+case "3":
+print("result:${num1*num2}");
+break;
+case "4":
+if(num2!=0){
+print("result:${num1/num2}");
+}
+else{
+print("Error:Division by zero is not allowed");
+}
+break;
+default:
+print("invalid choice");
+}
+}
+}
+

@@ -1,0 +1,116 @@
+import 'package:flutter/material.dart';
+class textwidget extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+return Container(
+  margin: EdgeInsets.all(15.0),
+  child: Text("HELLO A.S.K  ",textDirection: TextDirection.ltr,style: TextStyle(decoration: TextDecoration.none,color: Colors.red),),
+
+)    ;
+  }
+}
+class stack extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+
+      child: Stack(
+
+        children: [
+
+          Container(
+            height: 200,
+            width: 200,
+            color: Colors.blue,
+          ),
+          Positioned(
+            left: 10,
+            right: 10,
+            top: 10,
+            bottom: 10,
+            child: Container(
+            height: 160,
+            width: 160,
+            color: Colors.green,
+          ),),
+          Positioned(
+              left: 20,
+              right: 20,
+              bottom: 20,
+              top: 20,
+              child:Container(
+            height: 120,
+            width: 120,
+            color: Colors.red,
+          ) ),
+          Positioned(
+              left: 80,
+              right: 80,
+              bottom: 80,
+              top: 80,
+              child:Text("A.S.K")),
+
+
+
+        ],
+      ),
+    );
+  }
+}
+class Col extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        children: [
+          Text("This is column"),
+          textwidget(),
+          textwidget(),
+          textwidget(),
+        ],
+      ),
+    );
+  }
+}
+class row extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Row(
+        children: <Widget>[
+          Text("Row"),
+          textwidget(),
+          textwidget(),
+          textwidget(),
+        ],
+      ),
+    );
+  }
+}
+class Sandeep extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        children: <Widget>[
+          stack(),
+          Col(),
+          row(),
+        ],
+      ),
+    );
+  }
+}
+void main(){
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    title: "row , column and stack widget",
+    home: Scaffold(
+      appBar: AppBar(title: Text("A.S.K APP",style: TextStyle(fontSize: 35.0),),),
+      body: Material(
+        color: Colors.cyan,
+        child: Sandeep(),
+      ),
+    ),
+  ));
+}

@@ -1,0 +1,130 @@
+import 'package:flutter/material.dart';
+
+class MyBox extends StatelessWidget {
+  final String name;
+  final String rollNo;
+  final String year;
+  final String branch;
+  final String college;
+  final Color boxColor; // Color specified by the user
+  final String imagePath; // Path or URL to the image
+
+  const MyBox({
+    Key? key,
+    required this.name,
+    required this.rollNo,
+    required this.year,
+    required this.branch,
+    required this.college,
+    required this.imagePath,
+    this.boxColor = Colors.white, // Default color
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 700,
+      height: 230,
+      margin: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.all(15.0),
+      decoration: BoxDecoration(
+        color: boxColor,
+        borderRadius: BorderRadius.circular(10.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.3),
+            spreadRadius: 3,
+            blurRadius: 5,
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          // Circular Image
+          CircleAvatar(
+            radius: 40, // Adjust the radius as needed
+            backgroundImage: AssetImage(imagePath), // Use NetworkImage for URLs
+          ),
+          SizedBox(width: 20), // Space between the image and text
+          // Text Details
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Name: $name", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                SizedBox(height: 8),
+                Text("Roll No: $rollNo", style: TextStyle(fontSize: 14)),
+                SizedBox(height: 8),
+                Text("Year: $year", style: TextStyle(fontSize: 14)),
+                SizedBox(height: 8),
+                Text("Branch: $branch", style: TextStyle(fontSize: 14)),
+                SizedBox(height: 8),
+                Text("College: $college", style: TextStyle(fontSize: 14)),
+                SizedBox(height: 8),
+                ElevatedButton(onPressed: (){}, child: Text("View Info"), style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red,
+                  foregroundColor: Colors.black,
+                ),)
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class MyApp extends StatelessWidget {
+  // List of profiles
+  final List<Map<String, String>> profiles = [
+    {
+      'name': 'Sanugula Thriveni',
+      'rollNo': '23vd5a509',
+      'year': '3rd Year',
+      'branch': 'Computer Science',
+      'college': 'JNTUHUCEM',
+      'imagePath': 'image/panda.jpg', // Replace with actual image path
+    },
+    {
+      'name': 'poojitha',
+      'rollNo': '23vd5a510',
+      'year': '3rd Year',
+      'branch': 'Electrical Engineering',
+      'college': 'jntuh University',
+      'imagePath': 'image/deer.jpg', // Replace with actual image path
+    },
+    // Add more profiles here...
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Profiles"),
+          backgroundColor: Colors.blue,
+        ),
+        body: ListView.builder(
+          itemCount: profiles.length,
+          itemBuilder: (context, index) {
+            final profile = profiles[index];
+            return MyBox(
+              name: profile['name']!,
+              rollNo: profile['rollNo']!,
+              year: profile['year']!,
+              branch: profile['branch']!,
+              college: profile['college']!,
+              imagePath: profile['imagePath']!,
+              boxColor: Colors.blue, // You can change the color if needed
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+void main() {
+  runApp(MyApp());
+}

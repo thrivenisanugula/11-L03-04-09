@@ -1,0 +1,29 @@
+
+import 'package:flutter/material.dart';
+import 'package:project4/first.dart';
+
+class Kumar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("A.S.K APP",style: TextStyle(fontSize: 35.0),),),
+backgroundColor: Colors.lightBlueAccent,
+      body: Center(
+
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.red, // Button background color
+            foregroundColor: Colors.white, // Button text color
+          ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Sandeep()),
+            );
+          },
+          child: Text("First Page"),
+        ),
+      ),
+    );
+  }
+}

@@ -1,0 +1,84 @@
+import 'package:flutter/material.dart';
+class thriveni extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+    return Container(
+      padding:EdgeInsets.all(15.0),
+      child:Column(
+        crossAxisAlignment:CrossAxisAlignment.start,
+        children:[
+          TextField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: "enter your name",
+              prefixIcon: Icon(Icons.person),
+            ),
+          ),
+          SizedBox(height: 16.0),
+          TextField(
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: "age",
+              prefixIcon:Icon(Icons.calendar_today),
+            ),
+          ),
+          SizedBox(height: 16.0),
+          TextField(
+            keyboardType: TextInputType.phone,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: "enter your moblie number",
+              prefixIcon: Icon(Icons.phone),
+            ),
+          ),
+          SizedBox(height: 16.0),
+          TextField(
+            keyboardType: TextInputType.emailAddress,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: "enter your email",
+              prefixIcon: Icon(Icons.email),
+            ),
+          ),
+          SizedBox(height: 16.0),
+          TextField(
+            keyboardType: TextInputType.streetAddress,
+            maxLines:3,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText:"enter your address",
+              prefixIcon:Icon(Icons.home),
+            ),
+          ),
+          SizedBox(height: 24.0),
+          Center(
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor:Colors.cyan,
+                foregroundColor:Colors.red,
+              ),
+    onPressed:(){
+    },
+    child: Text("Submit"),
+            ),
+          ),
+        ]
+      ),
+    );
+  }
+}
+void main(){
+  runApp(MaterialApp(
+    title: "form with input",
+    home: Scaffold(
+      appBar: AppBar(title:Text(
+        "3veni",style:TextStyle(fontSize: 30.0),),
+      backgroundColor: Colors.blue,
+      ),
+      body: Material(
+        child: thriveni(),
+      ),
+    ),
+  ));
+}

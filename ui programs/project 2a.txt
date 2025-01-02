@@ -1,0 +1,60 @@
+import 'package:flutter/material.dart';
+
+class textwidget extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+
+    return Container(
+
+        margin:EdgeInsets.all(15.0),
+        child: Text("Hello A.S.K",textDirection: TextDirection.ltr,
+    style: TextStyle(
+      decoration: TextDecoration.none,
+    color: Colors.red,
+      fontSize: 30.0,
+      // Set text color here
+    ),
+    ));
+  }}
+class imagewidget extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+  AssetImage asset= AssetImage("images/auth.jpg");
+  Image image=Image(image: asset,width: 250,height: 250,);
+  return image;
+}}
+class SANDEEP extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+
+    return Center(
+      child: Container(
+ // Ensure this is enough to fit both widgets
+        child:Center(
+        child: Column(
+
+          children: <Widget>[
+            imagewidget(), // Place the image at the top
+            textwidget(),  // Place the text at the bottom
+          ],
+        ),
+
+
+      ),
+    ));
+  }
+}
+
+void main(){
+  runApp(MaterialApp(
+    title: "Text, Container widgets",
+  home: Scaffold(
+  appBar: AppBar(title: Text("A.S.K App",
+    style: TextStyle(fontSize: 35.0,
+  color: Colors.green),),),
+    body: Material(
+      color: Colors.lightBlueAccent,
+      child: SANDEEP(),
+    ),
+  )));
+}
